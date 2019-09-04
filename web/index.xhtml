@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Passenger Information</title>
+    </h:head>
+    <h:body>
+        Click Button To get list of Passengers:
+        #{db.listAll()}
+        <h:form> <br/>
+             <!-- Use h:panelGrid -->
+            <h:panelGrid columns="6" style="color:gold">
+                <h:outputLabel value="PID"/>
+                <h:inputText id="pidInputText"
+                             value="#{passenegrBean.pid}"/>
+                <h:outputLabel value="pname" />
+                <h:inputText id="pnameInputText"
+                             value="#{passengerBean.pname}"/>
+                <h:outputLabel value="Age" />
+                <h:inputText id="ageInputText" size="1"
+                             value="#{passengerBean.age}"/>
+            </h:panelGrid>
+            <h:commandButton value="List Passengers"
+                             action="#{db.listAll()}"/>
+            <h:commandButton value="Search By Last Name"
+                             actionListener="SELECT SUBSTRING(@string, CHARINDEX(' ', @string) +1, 20)"/>
+
+                             <h:commandButton value="Clear" action="#{db.clear}"/>
+                               </h:form>
+                </h:body>
+                </html>
+
